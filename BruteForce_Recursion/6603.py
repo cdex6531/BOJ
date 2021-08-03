@@ -1,5 +1,4 @@
 def go(a, index, lotto):
-    print(lotto)
     if len(lotto) == 6:
         print(' '.join(map(str, lotto)))
         return
