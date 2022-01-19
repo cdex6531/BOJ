@@ -3,10 +3,9 @@
 
 using namespace std;
 
-bool ok[8] = {false, }; // 중복검사
 int arr[8]; 
 
-void solve(int idx, int n, int m)
+void solve(int idx, int n, int m, int pre)
 {
 	if (idx == m)
 	{
@@ -22,12 +21,9 @@ void solve(int idx, int n, int m)
 	}
 	for (int i = 1; i <= n; i++)
 	{
-		if (ok[i] == true)
-			continue;
-		ok[i] = true;
 		arr[idx] = i;
-		solve(idx + 1, n, m);
-		ok[i] = false;
+		if (i >= pre)
+			solve(idx + 1, n, m, i);
 	}
 }
 
@@ -39,6 +35,6 @@ int main(void)
 
 	int n, m;
 	cin >> n >> m;
-	solve(0, n, m);
+	solve(0, n, m, 1);
 	return 0;
 }
